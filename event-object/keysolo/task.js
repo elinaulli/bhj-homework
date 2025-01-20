@@ -16,10 +16,9 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
-  registerEvents() {
+  registerEvents() { 
    
-
-    let letterCheck = (event) => {
+    window.addEventListener('keyup', (event) => {
       let key = event.key;
       if ( key === this.currentSymbol.textContent) {
         this.success();
@@ -31,8 +30,8 @@ class Game {
       else {
         this.fail();
       }
-    }
-    window.addEventListener('keyup', letterCheck);
+    });
+    
     
   }
 
