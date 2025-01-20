@@ -1,19 +1,21 @@
 let arrayTab = Array.from(document.getElementsByClassName('tab'));
+let activeTab = document.querySelector('.tab_active');
 let arrayTabContent = Array.from(document.getElementsByClassName('tab__content'));
-
-arrayTab.forEach(tab => tab.addEventListener('click', checkTab));
-
-function checkTab(event){
-    // console.log(event.target);
-    if (!event.target.classList.contains('tab_active')){
-        event.target.parentElement.querySelector('.tab_active').classList.remove('tab_active');
-        event.target.classList.add('tab_active');
-    }
-    let indexTab = arrayTab.findIndex(element => element.classList.contains('tab_active'));
-    arrayTabContent[indexTab].classList.add('tab__content_active');
-    let indexContent = arrayTabContent.findIndex(element => element.classList.contains('tab__content_active'));
-    arrayTabContent[indexContent].classList.remove('tab__content_active');
+let activeContent = document.querySelector('.tab__content_active');
 
 
+arrayTab.forEach(tab => tab.addEventListener('click', () => {
+   let indexTab = arrayTab.indexOf(tab);
 
-}
+   activeTab.classList.remove('tab_active');
+   activeTab = tab;
+   activeTab.classList.add('tab_active');
+
+   activeContent.classList.remove('tab__content_active');
+   activeContent = arrayTabContent[indexTab];
+   activeContent.classList.add('tab__content_active');
+
+}));
+
+
+
