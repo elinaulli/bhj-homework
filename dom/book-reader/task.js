@@ -14,9 +14,13 @@ function selectBtn(event) {
 	sizeText = this.dataset.size;
 
 	if (sizeText === 'small') {
+		book.classList.remove('book_fs-big');
 		book.classList.add('book_fs-small');
 	} else if (sizeText === 'big') {
+		book.classList.remove('book_fs-small');
 		book.classList.add('book_fs-big');
+	} else if (sizeText === undefined) {
+		book.classList.remove('book_fs-small', 'book_fs-big');
 	}
 
 	event.preventDefault();
